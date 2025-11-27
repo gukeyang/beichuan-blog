@@ -1,0 +1,11 @@
+/* docs/.vitepress/theme/index.css */
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.dark {
+  --vp-c-bg: #121212;
+  --vp-c-bg-alt: #1a1a1a;
+}
+
