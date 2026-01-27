@@ -93,6 +93,7 @@ export function generateNav() {
     },
     { text: '工程化', link: '/engineering/' },
     { text: '实战项目', link: '/project/' },
+    { text: '更新日志', link: '/changelog' },
     { text: '知识星球', link: 'https://zsxq.com/' }
   ]
 }
