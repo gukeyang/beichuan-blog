@@ -1,0 +1,284 @@
+/* 导入 Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  /* 鼠标坐标变量 (由 JS 更新) */
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+
+  /* 字体系统：使用更具科技感的字体 */
+  --vp-font-family-base: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --vp-font-family-mono: "JetBrains Mono", monospace;
+
+  /* 品牌色：极光紫 (Aurora Violet) - 营造神秘感 */
+  --vp-c-brand-1: #8b5cf6; /* Violet 500 */
+  --vp-c-brand-2: #7c3aed; /* Violet 600 */
+  --vp-c-brand-3: #6d28d9; /* Violet 700 */
+  --vp-c-brand-soft: rgba(139, 92, 246, 0.12);
+
+  /* 浅色模式下的高级灰 */
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #f8fafc;
+  --vp-c-text-1: #1e293b;
+  --vp-c-text-2: #475569;
+}
+
+/* 鼠标跟随光晕 - 全局 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0; /* 放在内容之下 */
+  pointer-events: none;
+  /* 默认隐藏或非常淡 */
+  opacity: 0; 
+  transition: opacity 0.5s ease;
+}
+
+/* 浅色模式光晕 - 极淡的紫色光斑 */
+body::before {
+  opacity: 1;
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(139, 92, 246, 0.03),
+    transparent 40%
+  );
+}
+
+/* 深色模式 - 核心神秘感来源 */
+.dark {
+  /* 背景：深邃宇宙蓝 */
+  --vp-c-bg: #020617; /* Slate 950 */
+  --vp-c-bg-alt: #0f172a; /* Slate 900 */
+  --vp-c-bg-soft: #1e293b; /* Slate 800 */
+
+  /* 品牌色：荧光紫/青渐变感 */
+  --vp-c-brand-1: #a78bfa; /* Violet 400 */
+  --vp-c-brand-2: #c084fc; /* Purple 400 */
+  --vp-c-brand-3: #e879f9; /* Fuchsia 400 */
+  
+  /* 文本：冷银色 */
+  --vp-c-text-1: #f1f5f9;
+  --vp-c-text-2: #94a3b8;
+
+  /* 边框：微光 */
+  --vp-c-divider: rgba(148, 163, 184, 0.1);
+  --vp-c-border: rgba(148, 163, 184, 0.1);
+}
+
+/* 深色模式光晕 - 强烈的极光跟随 */
+.dark body::before {
+  opacity: 1;
+  background: 
+    radial-gradient(
+      800px circle at var(--mouse-x) var(--mouse-y), 
+      rgba(139, 92, 246, 0.1), /* 紫色核心 */
+      transparent 40%
+    ),
+    radial-gradient(
+      500px circle at calc(var(--mouse-x) + 50px) calc(var(--mouse-y) + 50px), 
+      rgba(45, 212, 191, 0.08), /* 青色伴随 */
+      transparent 40%
+    );
+}
+
+/* 全局样式微调 */
+.VPNavBar {
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid var(--vp-c-divider) !important;
+}
+
+/* 首页 Hero 区域 - 神秘极光渐变 */
+.VPHomeHero .name {
+  background: -webkit-linear-gradient(120deg, #a78bfa 30%, #2dd4bf 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 2em rgba(167, 139, 250, 0.3));
+}
+
+.VPHomeHero .text {
+  color: var(--vp-c-text-2);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.VPHomeHero .image-bg {
+  opacity: 0.4;
+  filter: blur(80px);
+  background-image: linear-gradient(135deg, #4c1d95 0%, #0f766e 100%);
+}
+
+/* Features 卡片 - 浅色模式适配 */
+.VPFeature {
+  background-color: rgba(255, 255, 255, 0.8) !important; /* 浅色模式下为半透明白色 */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* 确保卡片在光晕之上 */
+  position: relative;
+  z-index: 1;
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  background-color: #ffffff !important;
+  border-color: var(--vp-c-brand-1) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Features 卡片 - 深色模式适配 (Cyber Mystery 风格) */
+.dark .VPFeature {
+  background-color: rgba(30, 41, 59, 0.4) !important; /* 深色模式下为半透明深蓝 */
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark .VPFeature:hover {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
+}
+
+.VPFeature .icon {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(45, 212, 191, 0.2) 100%);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.VPFeature .title {
+  font-family: var(--vp-font-family-mono); /* 使用等宽字体增加科技感 */
+  letter-spacing: -0.5px;
+}
+
+/* 按钮 - 霓虹光泽 */
+.VPButton.brand {
+  background: linear-gradient(90deg, #7c3aed 0%, #4f46e5 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.VPButton.brand:hover {
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.6);
+  transform: scale(1.02);
+}
+
+.VPButton.alt {
+  border-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.02);
+  color: var(--vp-c-text-1);
+}
+
+.dark .VPButton.alt {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.VPButton.alt:hover {
+  border-color: var(--vp-c-brand-1);
+  background-color: rgba(139, 92, 246, 0.05);
+}
+
+/* 侧边栏 & 导航链接 */
+.VPSidebarItem.is-active > .item > .link > .text {
+  color: var(--vp-c-brand-1);
+  text-shadow: none;
+}
+
+.dark .VPSidebarItem.is-active > .item > .link > .text {
+  color: #2dd4bf; /* Teal 400 - 激活状态使用青色，形成撞色 */
+  text-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
+}
+
+.vp-doc a {
+  color: var(--vp-c-brand-1);
+  text-decoration-color: var(--vp-c-brand-soft);
+}
+
+.dark .vp-doc a {
+  color: #2dd4bf; /* 文档内链接也使用青色 */
+  text-decoration-color: rgba(45, 212, 191, 0.4);
+}
+
+.vp-doc a:hover {
+  color: var(--vp-c-brand-2);
+  text-decoration-color: var(--vp-c-brand-2);
+}
+
+.dark .vp-doc a:hover {
+  color: #5eead4;
+  text-decoration-color: #5eead4;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+/* 侧边栏大纲样式优化 (Outline) */
+.VPDocOutline .outline-link {
+  font-size: 13px;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+}
+
+.VPDocOutline .outline-link.active {
+  color: var(--vp-c-brand-1) !important;
+  font-weight: 600;
+}
+
+.dark .VPDocOutline .outline-link.active {
+  color: #2dd4bf !important; /* 深色模式下使用青色高亮 */
+  text-shadow: 0 0 8px rgba(45, 212, 191, 0.3);
+}
+
+.VPDocOutline .outline-marker {
+  width: 2px;
+  background-color: var(--vp-c-brand-1);
+}
+
+.dark .VPDocOutline .outline-marker {
+  background-color: #2dd4bf;
+  box-shadow: 0 0 8px rgba(45, 212, 191, 0.5);
+}
+
+/* 侧边栏左侧导航 (Sidebar) 优化 */
+.VPSidebar {
+  border-right: 1px solid var(--vp-c-divider) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.8) !important; /* 浅色模式磨砂 */
+}
+
+.dark .VPSidebar {
+  background-color: rgba(2, 6, 23, 0.8) !important; /* 深色模式磨砂 */
+}
+
+/* 隐藏侧边栏右侧的 curtain 遮罩，让磨砂效果更通透 */
+.VPSidebar .curtain {
+  display: none;
+}
+
+/* 隐藏 VPLocalNavOutlineDropdown (顶部面包屑下的“本页目录”) */
+.VPLocalNavOutlineDropdown {
+  display: none !important;
+}
