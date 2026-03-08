@@ -1,15 +1,47 @@
-# 数据库学习指南
+# 数据库
 
-数据库是后端开发的核心组件，主要分为关系型数据库 (RDBMS) 和非关系型数据库 (NoSQL)。
+MySQL、Redis 等数据库原理与优化实战。
 
-## 1. 关系型数据库 (MySQL)
-- **核心原理**：索引 (B+树)、事务 (ACID)、锁机制 (MVCC)。
-- **实战优化**：SQL 调优、分库分表、主从复制。
+## 🔥 MySQL 高频考点
 
-## 2. NoSQL (Redis)
-- **核心场景**：缓存、分布式锁、排行榜、计数器。
-- **高可用**：哨兵模式 (Sentinel)、集群模式 (Cluster)。
+- InnoDB vs MyISAM 存储引擎区别
+- B+ 树索引原理及优化
+- 事务隔离级别和 MVCC 机制
+- 锁机制（行锁、间隙锁、Next-Key Lock）
+- SQL 执行计划分析（EXPLAIN）
+- 慢查询优化实战
+- 分库分表方案设计
 
-## 3. 搜索引擎 (Elasticsearch)
-- **核心原理**：倒排索引。
-- **场景**：全文检索、日志分析 (ELK)。
+## 🔥 Redis 高频考点
+
+- 5 种基本数据结构及应用场景
+- RDB 和 AOF 持久化机制
+- 主从复制和哨兵模式
+- Redis Cluster 集群原理
+- 缓存穿透、击穿、雪崩解决方案
+- 分布式锁实现（Redlock）
+
+## 📝 MySQL 最佳实践
+
+```sql
+-- ✅ 推荐：使用覆盖索引
+SELECT id, name FROM users WHERE id = 1;
+
+-- ❌ 避免：SELECT *
+SELECT * FROM users WHERE id = 1;
+
+-- ✅ 推荐：批量插入
+INSERT INTO users (name, age) VALUES 
+    ('a', 1), ('b', 2), ('c', 3);
+```
+
+## 📝 Redis 最佳实践
+
+```java
+// ✅ 推荐：使用 pipeline 批量操作
+Pipeline pipeline = jedis.pipelined();
+for (int i = 0; i < 1000; i++) {
+    pipeline.set("key:" + i, "value:" + i);
+}
+pipeline.sync();
+```

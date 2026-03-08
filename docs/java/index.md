@@ -1,57 +1,29 @@
-# 一、Java 语言基础（地基阶段）
+# Java 基础
 
-欢迎来到 Java 语言基础学习专区！这是后端开发的地基，必须扎实掌握。
+Java 核心技术栈学习指南，涵盖从基础语法到高级特性的完整知识体系。
 
-## 📚 学习内容
+## 📚 知识体系
 
-### 1. 核心语法
-- **数据类型**：基本类型 vs 引用类型
-- **运算符、流程控制**：if/switch/for/while
-- **数组与字符串**：String 不可变性、StringBuilder 性能优化
+```
+基础语法 → 面向对象 → 集合框架 → 异常处理 → 多线程并发 → JVM 原理 → 设计模式
+```
 
-### 2. 面向对象编程（OOP）
-- **封装、继承、多态**
-- **抽象类 vs 接口**：Java 8+ 默认方法、静态方法
-- **@Override 注解、super 关键字**
+## 📖 文章列表
 
-### 3. 集合框架
-- **List**：ArrayList / LinkedList
-- **Set**：HashSet / TreeSet
-- **Map**：HashMap / ConcurrentHashMap
-- **重点**：HashMap 底层结构（数组 + 链表/红黑树）、扩容机制、线程安全问题
+<!-- 文章列表将由 auto-sidebar 自动生成 -->
 
-### 4. 异常处理
-- **Throwable 体系**：Error vs Exception
-- **受检异常 vs 非受检异常**
-- **自定义异常、日志记录**（避免只 printStackTrace()）
+## 🔥 面试高频考点
 
-### 5. 多线程与并发（后端核心！）
-- **线程创建方式**：Runnable / Callable
-- **线程池**：ThreadPoolExecutor 参数详解
-- **同步机制**：synchronized、ReentrantLock、volatile
-- **JUC 包**：AtomicInteger、CountDownLatch、CompletableFuture
+- HashMap 底层原理及扩容机制
+- ConcurrentHashMap 如何实现线程安全
+- volatile 关键字的作用和原理
+- synchronized 锁升级过程
+- 线程池核心参数和工作流程
+- JVM 内存模型和垃圾回收机制
+- ClassLoader 双亲委派模型
 
-### 6. Java 8+ 新特性（必须掌握）
-- **Lambda 表达式**
-- **Stream API**：filter/map/reduce
-- **Optional**：避免 NPE
-- **新日期时间 API**：LocalDateTime
-- **JDK 17/21**：虚拟线程（Project Loom）、模式匹配等
+## 📚 推荐资源
 
-## 📖 推荐资源
-
-- **书籍**：《Java 核心技术 卷 I》《Effective Java》
-- **工具**：IntelliJ IDEA + Maven/Gradle + Git
-
-## 🎯 学习目标
-
-- [ ] 掌握 Java 核心语法
-- [ ] 理解面向对象编程思想
-- [ ] 熟练使用集合框架
-- [ ] 掌握多线程与并发编程
-- [ ] 熟悉 Java 8+ 新特性
-
----
-
-更多文章正在更新中...
-
+- 📖 《Effective Java》- Joshua Bloch
+- 📖 《Java 并发编程实战》- Brian Goetz
+- 📖 《深入理解 Java 虚拟机》- 周志明
