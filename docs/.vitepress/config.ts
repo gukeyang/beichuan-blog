@@ -1,5 +1,9 @@
 import { defineConfig } from 'vitepress'
 import { generateSidebar, generateNav } from './utils/auto-sidebar'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   title: '北川博客',
@@ -7,7 +11,7 @@ export default defineConfig({
   ignoreDeadLinks: true,
   themeConfig: {
     nav: generateNav(),
-    sidebar: generateSidebar('./'),
+    sidebar: generateSidebar(path.resolve(__dirname, '../')),
     socialLinks: [
       { icon: 'github', link: 'https://github.com/gukeyang/beichuan-blog' }
     ],
