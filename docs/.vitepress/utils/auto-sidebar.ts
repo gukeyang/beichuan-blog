@@ -10,7 +10,8 @@ const WHITE_LIST = [
   'middleware',
   'engineering',
   'foundation',
-  'project'
+  'project',
+  'openclaw'
 ]
 
 // 目录名称映射（用于 Nav 显示中文）
@@ -22,7 +23,8 @@ const DIR_NAME_MAP: Record<string, string> = {
   middleware: '中间件',
   engineering: '工程化',
   foundation: '计算机基础',
-  project: '项目实战'
+  project: '项目实战',
+  openclaw: 'OpenClaw'
 }
 
 // 忽略的文件
@@ -93,6 +95,7 @@ export function generateNav() {
     },
     { text: '工程化', link: '/engineering/' },
     { text: '实战项目', link: '/project/' },
+    { text: 'OpenClaw', link: '/openclaw/' },
     { text: '更新日志', link: '/changelog' },
     { text: '知识星球', link: 'https://zsxq.com/' }
   ]
