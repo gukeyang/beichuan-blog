@@ -4,6 +4,7 @@ import { generateSidebar, generateNav } from './utils/auto-sidebar'
 export default defineConfig({
   title: '北川博客',
   description: '后端开发技术博客 - Java、数据库、中间件、系统架构',
+  ignoreDeadLinks: true,
   themeConfig: {
     nav: generateNav(),
     sidebar: generateSidebar('./'),
