@@ -1,41 +1,27 @@
 # 中间件
 
-Kafka、RabbitMQ、Elasticsearch、ZooKeeper 等中间件实战应用。
+> 🔌 分布式系统的基石
 
-## 🔥 高频考点
+## 文章列表
 
-### Kafka
-- 架构设计（Producer、Broker、Consumer、ZooKeeper）
-- 消息可靠性保证（ACK 机制、重试、幂等）
-- 顺序消息实现
-- 消息积压解决方案
-- Consumer Group 重平衡机制
+| 主题 | 描述 | 难度 |
+|------|------|------|
+| [Kafka 核心概念](/middleware/kafka-core) | 架构、Topic、Partition、Consumer Group | ⭐⭐⭐ |
+| [Kafka 实战](/middleware/kafka-practice) | 生产者、消费者配置与最佳实践 | ⭐⭐⭐ |
+| [Redis 核心概念](/middleware/redis-core) | 数据结构、持久化、集群 | ⭐⭐⭐ |
+| [RabbitMQ 入门](/middleware/rabbitmq-basics) | 交换机、队列、路由 | ⭐⭐ |
+| [消息队列选型](/middleware/mq-comparison) | Kafka vs RabbitMQ vs RocketMQ | ⭐⭐ |
 
-### RabbitMQ
-- 交换机类型（Direct、Fanout、Topic、Headers）
-- 消息可靠性（Confirm、Return、持久化）
-- 死信队列和延迟队列
-- 集群和镜像队列
+## 为什么需要中间件
 
-### Elasticsearch
-- 倒排索引原理
-- 分片和副本机制
-- 写入和查询流程
-- 性能优化（Mapping、分词器）
+1. **解耦** - 降低系统间依赖
+2. **异步** - 提升响应速度
+3. **削峰** - 缓冲突发流量
+4. **可靠传输** - 保证消息不丢失
 
-### ZooKeeper
-- ZAB 协议
-- 节点类型（持久、临时、顺序）
-- Watcher 机制
-- 分布式锁实现
+## 学习建议
 
-## 📝 选型对比
-
-| 场景 | 推荐方案 |
-|------|----------|
-| 日志收集 | Kafka |
-| 订单消息 | RocketMQ/RabbitMQ |
-| 实时计算 | Kafka |
-| 搜索引擎 | Elasticsearch |
-| 配置管理 | Nacos/Apollo |
-| 分布式锁 | ZooKeeper/Redis |
+- 先理解核心概念
+- 搭建本地环境实践
+- 阅读官方文档
+- 生产环境注意监控和调优
