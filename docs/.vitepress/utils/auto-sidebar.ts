@@ -11,7 +11,8 @@ const WHITE_LIST = [
   'engineering',
   'foundation',
   'project',
-  'openclaw'
+  'openclaw',
+  'ai'
 ]
 
 // 目录名称映射（用于 Nav 显示中文）
@@ -24,7 +25,8 @@ const DIR_NAME_MAP: Record<string, string> = {
   engineering: '工程化',
   foundation: '计算机基础',
   project: '项目实战',
-  openclaw: 'OpenClaw'
+  openclaw: 'OpenClaw',
+  ai: 'AI 大模型'
 }
 
 // 忽略的文件
@@ -93,6 +95,7 @@ export function generateNav() {
         { text: '中间件', link: '/middleware/' },
       ]
     },
+    { text: 'AI 大模型', link: '/ai/' },
     { text: '工程化', link: '/engineering/' },
     { text: '实战项目', link: '/project/' },
     { text: 'OpenClaw', link: '/openclaw/' },
