@@ -5,9 +5,6 @@ hero:
   name: 北川博客
   text: 后端开发技术分享
   tagline: 专注 Java、Spring、分布式系统与 AI 应用开发
-  image:
-    src: /hero.png
-    alt: 北川博客
   actions:
     - theme: brand
       text: 🚀 开始学习
