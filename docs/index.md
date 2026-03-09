@@ -42,6 +42,10 @@ features:
     title: 项目实战
     details: 真实项目案例，从需求到上线的完整开发流程
     link: /project/
+  - icon: 🤖
+    title: AI 大模型
+    details: LLM 原理、Prompt Engineering、Agent 开发、本地部署实战
+    link: /ai/
 ---
 
 ## 🎯 为什么选择这里？
