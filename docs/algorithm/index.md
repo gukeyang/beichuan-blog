@@ -1,16 +1,16 @@
-# 算法与数据结构
+# 算法
 
-> 💡 编程的核心内功
+> 💡 编程内功：排序、查找、树、图、动态规划
 
 ## 文章列表
 
-| 主题 | 描述 | 难度 |
-|------|------|------|
-| [常见排序算法](/algorithm/sorting-algorithms) | 快速排序、归并排序、堆排序等 | ⭐⭐ |
-| [二叉树遍历](/algorithm/binary-tree-traversal) | 前序、中序、后序、层序遍历 | ⭐⭐ |
-| [动态规划入门](/algorithm/dynamic-programming) | DP 核心思想与经典问题 | ⭐⭐⭐ |
-| [链表操作](/algorithm/linked-list) | 反转、合并、检测环 | ⭐⭐ |
-| [哈希表应用](/algorithm/hash-table) | 哈希冲突解决与实际应用 | ⭐⭐ |
+| 主题 | 描述 | 难度 | 状态 |
+|------|------|------|------|
+| [常见排序算法](/algorithm/sorting-algorithms) | 快速/归并/堆/冒泡/插入/选择排序 | ⭐⭐ | ✅ |
+| [二叉树遍历](/algorithm/binary-tree-traversal) | 前序、中序、后序、层序遍历 | ⭐⭐ | 🚧 |
+| [动态规划入门](/algorithm/dynamic-programming) | DP 核心思想与经典问题 | ⭐⭐⭐ | 🚧 |
+| [链表操作](/algorithm/linked-list) | 反转、合并、检测环 | ⭐⭐ | 🚧 |
+| [哈希表应用](/algorithm/hash-table) | 哈希冲突解决与实际应用 | ⭐⭐ | 🚧 |
 
 ## 学习建议
 

@@ -1,6 +1,6 @@
-# AI 大模型应用开发
+# AI 大模型
 
-> 🤖 探索大模型应用开发，从原理到实战
+> 🤖 LLM 应用开发：原理、Prompt、RAG、Agent、本地部署
 
 ## 核心内容
 
@@ -11,13 +11,13 @@
 
 ## 文章列表
 
-| 主题 | 描述 | 难度 |
-|------|------|------|
-| [大模型基础概念](/ai/llm-basics) | LLM 工作原理、Token、上下文窗口 | ⭐⭐ |
-| [Prompt Engineering](/ai/prompt-engineering) | 提示词设计与优化技巧 | ⭐⭐ |
-| [RAG 实战](/ai/rag-implementation) | 检索增强生成系统搭建 | ⭐⭐⭐ |
-| [Agent 开发](/ai/agent-development) | 智能体设计与实现 | ⭐⭐⭐⭐ |
-| [本地模型部署](/ai/local-model-deployment) | Ollama、vLLM 部署指南 | ⭐⭐⭐ |
+| 主题 | 描述 | 难度 | 状态 |
+|------|------|------|------|
+| [大模型基础概念](/ai/llm-basics) | LLM 工作原理、Token、上下文窗口 | ⭐⭐ | 🚧 |
+| [Prompt Engineering](/ai/prompt-engineering) | 提示词设计与优化技巧 | ⭐⭐ | 🚧 |
+| [RAG 实战](/ai/rag-implementation) | 检索增强生成系统搭建 | ⭐⭐⭐ | 🚧 |
+| [Agent 开发实战](/ai/agent-development) | 智能体设计与实现 | ⭐⭐⭐⭐ | ✅ |
+| [本地模型部署指南](/ai/local-model-deployment) | Ollama、vLLM 部署指南 | ⭐⭐⭐ | ✅ |
 
 ## 技术栈
 
@@ -28,13 +28,9 @@
 
 ## 学习路线
 
-```
-入门 → 大模型基础 → Prompt Engineering
-        ↓
-进阶 → RAG 实战 → Agent 开发
-        ↓
-高级 → 本地模型部署 → 性能优化
-```
+- **入门** → 大模型基础 → Prompt Engineering
+- **进阶** → RAG 实战 → Agent 开发
+- **高级** → 本地模型部署 → 性能优化
 
 ## 快速开始
 

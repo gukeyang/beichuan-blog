@@ -1,16 +1,16 @@
 # 中间件
 
-> 🔌 分布式系统的基石
+> 🔌 分布式系统基石：Kafka、Redis、RabbitMQ、消息队列选型
 
 ## 文章列表
 
-| 主题 | 描述 | 难度 |
-|------|------|------|
-| [Kafka 核心概念](/middleware/kafka-core) | 架构、Topic、Partition、Consumer Group | ⭐⭐⭐ |
-| [Kafka 实战](/middleware/kafka-practice) | 生产者、消费者配置与最佳实践 | ⭐⭐⭐ |
-| [Redis 核心概念](/middleware/redis-core) | 数据结构、持久化、集群 | ⭐⭐⭐ |
-| [RabbitMQ 入门](/middleware/rabbitmq-basics) | 交换机、队列、路由 | ⭐⭐ |
-| [消息队列选型](/middleware/mq-comparison) | Kafka vs RabbitMQ vs RocketMQ | ⭐⭐ |
+| 主题 | 描述 | 难度 | 状态 |
+|------|------|------|------|
+| [Kafka 核心概念](/middleware/kafka-core) | 架构、分区、消费者组、可靠性 | ⭐⭐⭐ | ✅ |
+| [Kafka 实战](/middleware/kafka-practice) | 生产者、消费者配置与最佳实践 | ⭐⭐⭐ | 🚧 |
+| [Redis 核心概念](/middleware/redis-core) | 数据结构、持久化、集群 | ⭐⭐⭐ | 🚧 |
+| [RabbitMQ 入门](/middleware/rabbitmq-basics) | 交换机、队列、路由 | ⭐⭐ | 🚧 |
+| [消息队列选型](/middleware/mq-comparison) | Kafka vs RabbitMQ vs RocketMQ | ⭐⭐ | 🚧 |
 
 ## 为什么需要中间件
 

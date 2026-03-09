@@ -1,15 +1,15 @@
 # 计算机基础
 
-> 🖥️ 程序员的内功心法
+> 🖥️ 程序员内功：操作系统、编译原理、数据结构
 
 ## 文章列表
 
-| 主题 | 描述 | 难度 |
-|------|------|------|
-| [操作系统核心概念](/foundation/os-core) | 进程、线程、内存管理 | ⭐⭐⭐ |
-| [计算机网络基础](/foundation/network-basics) | OSI 模型、TCP/IP 协议栈 | ⭐⭐ |
-| [数据结构概览](/foundation/data-structures) | 线性表、树、图、哈希表 | ⭐⭐ |
-| [编译原理入门](/foundation/compiler-basics) | 词法分析、语法分析 | ⭐⭐⭐⭐ |
+| 主题 | 描述 | 难度 | 状态 |
+|------|------|------|------|
+| [操作系统核心概念](/foundation/os-core) | 进程、线程、内存管理、死锁 | ⭐⭐⭐ | ✅ |
+| [计算机网络基础](/foundation/network-basics) | OSI 模型、TCP/IP 协议栈 | ⭐⭐ | 🚧 |
+| [数据结构概览](/foundation/data-structures) | 线性表、树、图、哈希表 | ⭐⭐ | 🚧 |
+| [编译原理入门](/foundation/compiler-basics) | 词法分析、语法分析 | ⭐⭐⭐⭐ | 🚧 |
 
 ## 为什么重要
 
