@@ -218,10 +218,26 @@ next: false
 import { onMounted, ref } from 'vue'
 
 const weatherIcons = {
-  '晴': '☀️', '晴间多云': '⛅', '多云': '☁️', '阴': '☁️', '阵雨': '🌦️',
-  '雷阵雨': '⛈️', '雨': '🌧️', '小雨': '🌦️', '中雨': '🌧️', '大雨': '⛈️',
-  '暴雨': '⛈️', '雪': '❄️', '小雪': '🌨️', '中雪': '❄️', '大雪': '❄️',
-  '雾': '🌫️', '霾': '🌫️', '扬沙': '🌫️', '浮尘': '🌫️', '沙尘暴': '🌫️',
+  '晴': '☀️',
+  '晴间多云': '⛅',
+  '多云': '☁️',
+  '阴': '☁️',
+  '阵雨': '🌦️',
+  '雷阵雨': '⛈️',
+  '雨': '🌧️',
+  '小雨': '🌦️',
+  '中雨': '🌧️',
+  '大雨': '⛈️',
+  '暴雨': '⛈️',
+  '雪': '❄️',
+  '小雪': '🌨️',
+  '中雪': '❄️',
+  '大雪': '❄️',
+  '雾': '🌫️',
+  '霾': '🌫️',
+  '扬沙': '🌫️',
+  '浮尘': '🌫️',
+  '沙尘暴': '🌫️',
   '默认': '🌤️'
 }
 
@@ -266,11 +282,6 @@ const fetchWeather = async () => {
   }
 }
 
-const formatTime = (timeStr) => {
-  if (!timeStr) return ''
-  return timeStr.replace(/-/g, '/').replace(' ', ' ')
-}
-
 onMounted(() => {
   fetchWeather()
   setInterval(fetchWeather, 1800000)
@@ -278,52 +289,46 @@ onMounted(() => {
 </script>
 
 <template>
-<div class="weather-page">
-  <div class="glass-card">
-    <template v-if="loading">
-      <div class="loading">
+  <div class="weather-page">
+    <div class="glass-card">
+      <div v-if="loading" class="loading">
         <div class="spinner"></div>
         <p>正在获取天气数据...</p>
       </div>
-    </template>
-    <template v-else-if="error">
-      <div class="loading">
+      <div v-else-if="error" class="loading">
         <div style="font-size: 4rem; margin-bottom: 16px;">😕</div>
         <p style="font-size: 1.1rem; margin-bottom: 8px;">获取天气失败</p>
         <p style="opacity: 0.7; font-size: 0.9rem;">{{ error }}</p>
         <p style="margin-top: 16px; opacity: 0.6; font-size: 0.85rem;">请刷新页面重试</p>
       </div>
-    </template>
-    <template v-else-if="weatherData">
-      <div class="location">📍 {{ weatherData.city }}</div>
-      <div class="weather-icon">{{ getWeatherIcon(weatherData.weather) }}</div>
-      <div class="temperature">{{ weatherData.temperature }}°C</div>
-      <div class="condition">{{ weatherData.weather }}</div>
-      <div class="feels-like">🌡️ 体感相似温度</div>
-      
-      <div class="weather-grid">
-        <div class="grid-item">
-          <div class="grid-label">💨 风向</div>
-          <div class="grid-value">{{ weatherData.winddirection }}风</div>
+      <div v-else-if="weatherData">
+        <div class="location">📍 {{ weatherData.city }}</div>
+        <div class="weather-icon">{{ getWeatherIcon(weatherData.weather) }}</div>
+        <div class="temperature">{{ weatherData.temperature }}°C</div>
+        <div class="condition">{{ weatherData.weather }}</div>
+        <div class="feels-like">🌡️ 体感相似温度</div>
+        <div class="weather-grid">
+          <div class="grid-item">
+            <div class="grid-label">💨 风向</div>
+            <div class="grid-value">{{ weatherData.winddirection }}风</div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-label">🍃 风力</div>
+            <div class="grid-value">{{ weatherData.windpower }}级</div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-label">💧 湿度</div>
+            <div class="grid-value">{{ weatherData.humidity }}%</div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-label">📅 更新</div>
+            <div class="grid-value" style="font-size: 0.9rem;">{{ weatherData.reporttime ? weatherData.reporttime.split(' ')[1]?.slice(0, 5) : '--:--' }}</div>
+          </div>
         </div>
-        <div class="grid-item">
-          <div class="grid-label">🍃 风力</div>
-          <div class="grid-value">{{ weatherData.windpower }}级</div>
-        </div>
-        <div class="grid-item">
-          <div class="grid-label">💧 湿度</div>
-          <div class="grid-value">{{ weatherData.humidity }}%</div>
-        </div>
-        <div class="grid-item">
-          <div class="grid-label">📅 更新</div>
-          <div class="grid-value" style="font-size: 0.9rem;">{{ weatherData.reporttime?.split(' ')[1]?.slice(0, 5) || '--:--' }}</div>
+        <div class="update-time" v-if="weatherData.reporttime">
+          数据更新于 {{ weatherData.reporttime }}
         </div>
       </div>
-      
-      <div class="update-time" v-if="weatherData.reporttime">
-        数据更新于 {{ weatherData.reporttime }}
-      </div>
-    </template>
+    </div>
   </div>
-</div>
 </template>
