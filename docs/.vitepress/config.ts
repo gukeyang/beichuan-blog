@@ -9,8 +9,12 @@ export default defineConfig({
   title: '北川博客',
   description: '后端开发技术博客 - Java、数据库、中间件、系统架构',
   ignoreDeadLinks: true,
+  ignore: ['weather/**'], // 忽略 weather 目录，不生成文档
   themeConfig: {
-    nav: generateNav(),
+    nav: [
+      ...generateNav(),
+      { text: '🌤️ 天气', link: '/weather/' }
+    ],
     sidebar: generateSidebar(path.resolve(__dirname, '../')),
     socialLinks: [
       { icon: 'github', link: 'https://github.com/gukeyang/beichuan-blog' }
