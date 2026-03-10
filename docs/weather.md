@@ -25,6 +25,7 @@ next: false
 @media (max-width: 600px) { .glass-card { padding: 25px; } .location { font-size: 1.4rem; } .weather-icon { font-size: 3.5rem; } .temperature { font-size: 3rem; } .weather-grid { grid-template-columns: repeat(2, 1fr); } }
 </style>
 
+<ClientOnly>
 <div class="weather-page">
   <div class="glass-card">
     <div class="loading" id="loading">
@@ -123,3 +124,4 @@ async function fetchFallback() {
 fetchWeather();
 setInterval(fetchWeather, 1800000);
 </script>
+</ClientOnly>
