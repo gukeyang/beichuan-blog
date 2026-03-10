@@ -24,7 +24,6 @@ next: false
     overflow-x: hidden;
   }
 
-  /* 动态背景动画 */
   .weather-container::before {
     content: '';
     position: fixed;
@@ -51,7 +50,6 @@ next: false
     width: 100%;
   }
 
-  /* 磨玻璃卡片 */
   .glass-card {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(20px);
@@ -69,7 +67,6 @@ next: false
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
   }
 
-  /* 主天气卡片 */
   .weather-main {
     text-align: center;
     color: white;
@@ -106,7 +103,6 @@ next: false
     opacity: 0.8;
   }
 
-  /* 天气详情网格 */
   .weather-details {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -133,7 +129,6 @@ next: false
     font-weight: 600;
   }
 
-  /* 加载状态 */
   .loading {
     display: flex;
     flex-direction: column;
@@ -154,7 +149,6 @@ next: false
     to { transform: rotate(360deg); }
   }
 
-  /* 响应式 */
   @media (max-width: 600px) {
     .glass-card {
       padding: 25px;
@@ -180,7 +174,6 @@ next: false
 
 <div class="weather-container">
   <div class="container">
-    <!-- 主天气卡片 -->
     <div class="glass-card weather-main" id="weather-card">
       <div class="loading" id="loading">
         <div class="spinner"></div>
@@ -217,109 +210,103 @@ next: false
   </div>
 </div>
 
-<script>
-  // 天气图标映射
-  const weatherIcons = {
-    'sunny': '☀️',
-    'clear': '☀️',
-    'partly-cloudy': '⛅',
-    'cloudy': '☁️',
-    'overcast': '☁️',
-    'rain': '🌧️',
-    'light-rain': '🌦️',
-    'heavy-rain': '⛈️',
-    'thunderstorm': '⚡',
-    'snow': '❄️',
-    'light-snow': '🌨️',
-    'heavy-snow': '❄️',
-    'fog': '🌫️',
-    'mist': '🌫️',
-    'haze': '🌫️',
-    'wind': '💨',
-    'default': '🌤️'
-  };
+<script setup>
+import { onMounted } from 'vue'
 
-  // 获取天气数据
-  async function fetchWeather() {
-    try {
-      // 使用 whyta.cn 天气 API
-      const apiKey = '6d997a997fbf';
-      const city = 'Chongqing';
-      const response = await fetch(`https://whyta.cn/api/tianqi?key=${apiKey}&city=${city}`);
-      
-      if (!response.ok) {
-        throw new Error('API 请求失败');
-      }
-      
-      const data = await response.json();
-      
-      if (data.status !== 1) {
-        throw new Error(data.message || 'API 返回错误');
-      }
-      
-      const current = data.data;
-      
-      // 更新主天气信息
-      document.getElementById('location').textContent = `📍 ${current.city}`;
-      document.getElementById('weather-icon').textContent = getWeatherIcon(current.weatherDesc[0].value);
-      document.getElementById('temperature').textContent = `${current.temp_C}°C`;
-      document.getElementById('condition').textContent = current.weatherDesc[0].value;
-      document.getElementById('feels-like').textContent = `体感温度：${current.FeelsLikeC}°C`;
-      document.getElementById('wind').textContent = `${current.windspeedKmph} km/h`;
-      document.getElementById('humidity').textContent = `${current.humidity}%`;
-      document.getElementById('precipitation').textContent = `${current.precipMM} mm`;
-      document.getElementById('visibility').textContent = `${current.visibility} km`;
-      
-      // 隐藏加载，显示内容
-      document.getElementById('loading').style.display = 'none';
-      document.getElementById('weather-content').style.display = 'block';
-      
-    } catch (error) {
-      console.error('获取天气失败:', error);
-      fetchWeatherFallback();
-    }
+const weatherIcons = {
+  'sunny': '☀️',
+  'clear': '☀️',
+  'partly-cloudy': '⛅',
+  'cloudy': '☁️',
+  'overcast': '☁️',
+  'rain': '🌧️',
+  'light-rain': '🌦️',
+  'heavy-rain': '⛈️',
+  'thunderstorm': '⚡',
+  'snow': '❄️',
+  'light-snow': '🌨️',
+  'heavy-snow': '❄️',
+  'fog': '🌫️',
+  'mist': '🌫️',
+  'haze': '🌫️',
+  'wind': '💨',
+  'default': '🌤️'
+}
+
+function getWeatherIcon(desc) {
+  const lower = desc.toLowerCase()
+  for (const [key, icon] of Object.entries(weatherIcons)) {
+    if (lower.includes(key)) return icon
   }
+  return weatherIcons.default
+}
 
-  // 降级方案：wttr.in API
-  async function fetchWeatherFallback() {
-    try {
-      const response = await fetch('https://wttr.in/Chongqing?format=j1');
-      const data = await response.json();
-      
-      const current = data.current_condition[0];
-      const location = data.nearest_area[0];
-      
-      document.getElementById('location').textContent = `📍 ${location.areaName[0].value}，${location.country[0].value}`;
-      document.getElementById('weather-icon').textContent = getWeatherIcon(current.weatherDesc[0].value);
-      document.getElementById('temperature').textContent = `${current.temp_C}°C`;
-      document.getElementById('condition').textContent = current.weatherDesc[0].value;
-      document.getElementById('feels-like').textContent = `体感温度：${current.FeelLikeC}°C`;
-      document.getElementById('wind').textContent = `${current.windspeedKmph} km/h`;
-      document.getElementById('humidity').textContent = `${current.humidity}%`;
-      document.getElementById('precipitation').textContent = `${current.chanceofrain}%`;
-      document.getElementById('visibility').textContent = `${current.visibility} km`;
-      
-      document.getElementById('loading').style.display = 'none';
-      document.getElementById('weather-content').style.display = 'block';
-      
-    } catch (error) {
-      console.error('备用 API 也失败:', error);
-      document.getElementById('loading').innerHTML = '<p>获取天气数据失败，请稍后刷新</p>';
+async function fetchWeather() {
+  try {
+    const apiKey = '6d997a997fbf'
+    const city = 'Chongqing'
+    const response = await fetch(`https://whyta.cn/api/tianqi?key=${apiKey}&city=${city}`)
+    
+    if (!response.ok) {
+      throw new Error('API 请求失败')
     }
-  }
-
-  // 获取天气图标
-  function getWeatherIcon(desc) {
-    const lower = desc.toLowerCase();
-    for (const [key, icon] of Object.entries(weatherIcons)) {
-      if (lower.includes(key)) return icon;
+    
+    const data = await response.json()
+    
+    if (data.status !== 1) {
+      throw new Error(data.message || 'API 返回错误')
     }
-    return weatherIcons.default;
+    
+    const current = data.data
+    
+    document.getElementById('location').textContent = `📍 ${current.city}`
+    document.getElementById('weather-icon').textContent = getWeatherIcon(current.weatherDesc[0].value)
+    document.getElementById('temperature').textContent = `${current.temp_C}°C`
+    document.getElementById('condition').textContent = current.weatherDesc[0].value
+    document.getElementById('feels-like').textContent = `体感温度：${current.FeelsLikeC}°C`
+    document.getElementById('wind').textContent = `${current.windspeedKmph} km/h`
+    document.getElementById('humidity').textContent = `${current.humidity}%`
+    document.getElementById('precipitation').textContent = `${current.precipMM} mm`
+    document.getElementById('visibility').textContent = `${current.visibility} km`
+    
+    document.getElementById('loading').style.display = 'none'
+    document.getElementById('weather-content').style.display = 'block'
+    
+  } catch (error) {
+    console.error('获取天气失败:', error)
+    fetchWeatherFallback()
   }
+}
 
-  // 页面加载时获取天气
-  fetchWeather();
-  
-  // 每 30 分钟刷新一次
-  setInterval(fetchWeather, 30 * 60 * 1000);
+async function fetchWeatherFallback() {
+  try {
+    const response = await fetch('https://wttr.in/Chongqing?format=j1')
+    const data = await response.json()
+    
+    const current = data.current_condition[0]
+    const location = data.nearest_area[0]
+    
+    document.getElementById('location').textContent = `📍 ${location.areaName[0].value}，${location.country[0].value}`
+    document.getElementById('weather-icon').textContent = getWeatherIcon(current.weatherDesc[0].value)
+    document.getElementById('temperature').textContent = `${current.temp_C}°C`
+    document.getElementById('condition').textContent = current.weatherDesc[0].value
+    document.getElementById('feels-like').textContent = `体感温度：${current.FeelLikeC}°C`
+    document.getElementById('wind').textContent = `${current.windspeedKmph} km/h`
+    document.getElementById('humidity').textContent = `${current.humidity}%`
+    document.getElementById('precipitation').textContent = `${current.chanceofrain}%`
+    document.getElementById('visibility').textContent = `${current.visibility} km`
+    
+    document.getElementById('loading').style.display = 'none'
+    document.getElementById('weather-content').style.display = 'block'
+    
+  } catch (error) {
+    console.error('备用 API 也失败:', error)
+    document.getElementById('loading').innerHTML = '<p>获取天气数据失败，请稍后刷新</p>'
+  }
+}
+
+onMounted(() => {
+  fetchWeather()
+  setInterval(fetchWeather, 30 * 60 * 1000)
+})
 </script>
