@@ -29,65 +29,47 @@ next: false
 import { onMounted } from 'vue'
 
 const weatherIcons = {
-  sunny: '☀️', clear: '☀️', 'partly-cloudy': '⛅', cloudy: '☁️', overcast: '☁️',
-  rain: '🌧️', 'light-rain': '🌦️', 'heavy-rain': '⛈️', thunderstorm: '⚡',
-  snow: '❄️', 'light-snow': '🌨️', 'heavy-snow': '❄️', fog: '🌫️', mist: '🌫️', haze: '🌫️', wind: '💨'
+  晴：'☀️', 晴间多云：'⛅', 多云：'☁️', 阴：'☁️', 阵雨：'🌦️',
+  雷阵雨：'⛈️', 雨：'🌧️', 小雨：'🌦️', 中雨：'🌧️', 大雨：'⛈️',
+  暴雨：'⛈️', 雪：'❄️', 小雪：'🌨️', 中雪：'❄️', 大雪：'❄️',
+  雾：'🌫️', 霾：'🌫️', 扬沙：'🌫️', 浮尘：'🌫️', 沙尘暴：'🌫️',
+  默认：'🌤️'
 }
 
 const getWeatherIcon = (desc) => {
-  const lower = desc.toLowerCase()
+  if (!desc) return weatherIcons['默认']
   for (const [key, icon] of Object.entries(weatherIcons)) {
-    if (lower.includes(key)) return icon
+    if (desc.includes(key)) return icon
   }
-  return '🌤️'
+  return weatherIcons['默认']
 }
 
 const fetchWeather = async () => {
   if (typeof document === 'undefined') return
   try {
-    const response = await fetch('https://whyta.cn/api/tianqi?key=6d997a997fbf&city=Chongqing')
-    if (!response.ok) throw new Error('API 失败')
+    const key = 'ef5e927e2dae61851e920eb74987fd81'
+    const city = '500106'
+    const response = await fetch(`https://restapi.amap.com/v3/weather/weatherInfo?city=${city}&extensions=base&output=JSON&key=${key}`)
+    if (!response.ok) throw new Error('API 请求失败')
     const data = await response.json()
-    if (data.status !== 1) throw new Error(data.message)
-    const c = data.data
-    document.getElementById('location').textContent = '📍 ' + c.city
-    document.getElementById('weather-icon').textContent = getWeatherIcon(c.weatherDesc[0].value)
-    document.getElementById('temperature').textContent = c.temp_C + '°C'
-    document.getElementById('condition').textContent = c.weatherDesc[0].value
-    document.getElementById('feels-like').textContent = '体感温度：' + c.FeelsLikeC + '°C'
-    document.getElementById('wind').textContent = c.windspeedKmph + ' km/h'
-    document.getElementById('humidity').textContent = c.humidity + '%'
-    document.getElementById('precipitation').textContent = c.precipMM + ' mm'
-    document.getElementById('visibility').textContent = c.visibility + ' km'
+    if (data.status !== '1') throw new Error(data.info || 'API 返回错误')
+    const live = data.lives[0]
+    if (!live) throw new Error('无天气数据')
+    document.getElementById('location').textContent = '📍 ' + live.city
+    document.getElementById('weather-icon').textContent = getWeatherIcon(live.weather)
+    document.getElementById('temperature').textContent = live.temperature + '°C'
+    document.getElementById('condition').textContent = live.weather
+    document.getElementById('feels-like').textContent = '体感温度：' + live.temperature + '°C'
+    document.getElementById('wind').textContent = live.winddirection + '风 ' + live.windpower + '级'
+    document.getElementById('humidity').textContent = live.humidity + '%'
+    document.getElementById('precipitation').textContent = '--'
+    document.getElementById('visibility').textContent = '--'
     document.getElementById('loading').style.display = 'none'
     document.getElementById('weather-content').style.display = 'block'
   } catch (e) {
-    console.error(e)
-    fetchFallback()
-  }
-}
-
-const fetchFallback = async () => {
-  if (typeof document === 'undefined') return
-  try {
-    const response = await fetch('https://wttr.in/Chongqing?format=j1')
-    const data = await response.json()
-    const c = data.current_condition[0]
-    const loc = data.nearest_area[0]
-    document.getElementById('location').textContent = '📍 ' + loc.areaName[0].value + '，' + loc.country[0].value
-    document.getElementById('weather-icon').textContent = getWeatherIcon(c.weatherDesc[0].value)
-    document.getElementById('temperature').textContent = c.temp_C + '°C'
-    document.getElementById('condition').textContent = c.weatherDesc[0].value
-    document.getElementById('feels-like').textContent = '体感温度：' + c.FeelLikeC + '°C'
-    document.getElementById('wind').textContent = c.windspeedKmph + ' km/h'
-    document.getElementById('humidity').textContent = c.humidity + '%'
-    document.getElementById('precipitation').textContent = c.chanceofrain + '%'
-    document.getElementById('visibility').textContent = c.visibility + ' km'
-    document.getElementById('loading').style.display = 'none'
-    document.getElementById('weather-content').style.display = 'block'
-  } catch (e) {
+    console.error('天气获取失败:', e)
     if (typeof document !== 'undefined') {
-      document.getElementById('loading').innerHTML = '<p>获取天气失败，请刷新</p>'
+      document.getElementById('loading').innerHTML = '<p>获取天气失败：' + e.message + '</p><p style="margin-top:10px;opacity:0.8">请刷新重试</p>'
     }
   }
 }
@@ -112,8 +94,8 @@ onMounted(() => {
       <div class="feels-like" id="feels-like">体感温度：--°C</div>
       <div class="weather-grid">
         <div class="grid-item">
-          <div class="grid-label">💨 风速</div>
-          <div class="grid-value" id="wind">-- km/h</div>
+          <div class="grid-label">💨 风向风力</div>
+          <div class="grid-value" id="wind">--</div>
         </div>
         <div class="grid-item">
           <div class="grid-label">💧 湿度</div>
@@ -121,11 +103,11 @@ onMounted(() => {
         </div>
         <div class="grid-item">
           <div class="grid-label">🌧️ 降水</div>
-          <div class="grid-value" id="precipitation">-- mm</div>
+          <div class="grid-value" id="precipitation">--</div>
         </div>
         <div class="grid-item">
           <div class="grid-label">👁️ 能见度</div>
-          <div class="grid-value" id="visibility">-- km</div>
+          <div class="grid-value" id="visibility">--</div>
         </div>
       </div>
     </div>
