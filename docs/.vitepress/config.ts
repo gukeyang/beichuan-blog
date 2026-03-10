@@ -12,7 +12,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       ...generateNav(),
-      { text: '🌤️ 天气', link: '/weather/index.html' }
+      { text: '🌤️ 天气', link: '/weather/' }
     ],
     sidebar: generateSidebar(path.resolve(__dirname, '../')),
     socialLinks: [
