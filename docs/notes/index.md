@@ -7,19 +7,17 @@ description: 技术学习笔记与总结
 
 这里是技术学习笔记的汇总，记录我的学习历程和技术总结。
 
-## 🗂️ 分类导航
+## 🗂️ 分类
 
-| 分类 | 说明 |
-|------|------|
-| [☕ Java 后端](/notes/java/) | Java 基础、Spring 框架、微服务架构等 |
-| [🤖 AI/机器学习](/notes/ai/) | 大模型、机器学习、深度学习等 |
-| [🎨 前端开发](/notes/frontend/) | Vue、React、TypeScript、CSS 等 |
-| [🗄️ 数据库](/notes/database/) | MySQL、Redis、MongoDB 等 |
-| [🚀 DevOps](/notes/devops/) | Docker、K8s、CI/CD、监控等 |
+- [☕ Java 后端](/notes/java/)
+- [🤖 AI/机器学习](/notes/ai/)
+- [🎨 前端开发](/notes/frontend/)
+- [🗄️ 数据库](/notes/database/)
+- [🚀 DevOps](/notes/devops/)
 
 ---
 
-## 📝 写作指南
+## 📝 写作建议
 
 记录笔记时建议包含：
 
@@ -31,18 +29,4 @@ description: 技术学习笔记与总结
 
 ---
 
-## 📅 最近笔记
-
-<!-- 手动维护最近更新的笔记列表 -->
-
-> 💡 提示：添加新笔记后，记得在这里更新列表哦！
-
----
-
-<div align="center">
-
-**开始学习吧！** 📖
-
-*选择一个分类开始探索 →*
-
-</div>
+> 💡 提示：添加新笔记后，记得更新上面的列表哦！
