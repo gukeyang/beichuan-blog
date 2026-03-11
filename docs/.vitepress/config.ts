@@ -76,13 +76,13 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '📄 概览', link: '/notes/java/' },
-                { text: '语法基础', link: '/java/syntax' },
-                { text: '面向对象', link: '/java/oop' },
-                { text: '异常处理', link: '/java/exception' },
-                { text: '集合框架', link: '/java/collection' },
-                { text: '并发编程', link: '/java/concurrency-basics' },
-                { text: '并发工具类', link: '/java/concurrent' },
-                { text: '新特性', link: '/java/new-features' }
+                { text: '语法基础', link: '/notes/java/syntax' },
+                { text: '面向对象', link: '/notes/java/oop' },
+                { text: '异常处理', link: '/notes/java/exception' },
+                { text: '集合框架', link: '/notes/java/collection' },
+                { text: '并发编程', link: '/notes/java/concurrency-basics' },
+                { text: '并发工具类', link: '/notes/java/concurrent' },
+                { text: '新特性', link: '/notes/java/new-features' }
               ]
             },
             {
@@ -91,11 +91,11 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '📄 概览', link: '/notes/spring/' },
-                { text: 'Spring Framework', link: '/spring/framework' },
-                { text: 'Spring Boot', link: '/spring/boot' },
-                { text: 'Spring Cloud', link: '/spring/cloud' },
-                { text: '架构设计', link: '/spring/architecture' },
-                { text: '自动配置原理', link: '/spring/spring-boot-autoconfig' }
+                { text: 'Spring Framework', link: '/notes/spring/framework' },
+                { text: 'Spring Boot', link: '/notes/spring/boot' },
+                { text: 'Spring Cloud', link: '/notes/spring/cloud' },
+                { text: '架构设计', link: '/notes/spring/architecture' },
+                { text: '自动配置原理', link: '/notes/spring/spring-boot-autoconfig' }
               ]
             },
             {
@@ -104,11 +104,11 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '📄 概览', link: '/notes/ai/' },
-                { text: 'LLM 基础', link: '/ai/llm-basics' },
-                { text: 'Prompt Engineering', link: '/ai/prompt-engineering' },
-                { text: 'RAG 实现', link: '/ai/rag-implementation' },
-                { text: '本地模型部署', link: '/ai/local-model-deployment' },
-                { text: 'Agent 开发', link: '/ai/agent-development' },
+                { text: 'LLM 基础', link: '/notes/ai/llm-basics' },
+                { text: 'Prompt Engineering', link: '/notes/ai/prompt-engineering' },
+                { text: 'RAG 实现', link: '/notes/ai/rag-implementation' },
+                { text: '本地模型部署', link: '/notes/ai/local-model-deployment' },
+                { text: 'Agent 开发', link: '/notes/ai/agent-development' },
                 { text: '🐕 OpenClaw 完全指南', link: '/notes/ai/openclaw-tutorial' },
                 { text: '🔧 OpenClaw 集成实践', link: '/notes/ai/openclaw-integration' }
               ]
@@ -119,10 +119,10 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '📄 概览', link: '/notes/database/' },
-                { text: 'MySQL 索引', link: '/database/mysql-index' },
-                { text: 'MySQL 索引优化', link: '/database/mysql-index-optimization' },
-                { text: 'NoSQL', link: '/database/nosql' },
-                { text: 'ORM', link: '/database/orm' }
+                { text: 'MySQL 索引', link: '/notes/database/mysql-index' },
+                { text: 'MySQL 索引优化', link: '/notes/database/mysql-index-optimization' },
+                { text: 'NoSQL', link: '/notes/database/nosql' },
+                { text: 'ORM', link: '/notes/database/orm' }
               ]
             },
             {
@@ -131,9 +131,9 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '📄 概览', link: '/notes/frontend/' },
-                { text: 'HTTP 协议', link: '/web/http' },
-                { text: 'HTTP vs HTTPS', link: '/network/http-vs-https' },
-                { text: 'Servlet', link: '/web/servlet' }
+                { text: 'HTTP 协议', link: '/notes/web/http' },
+                { text: 'HTTP vs HTTPS', link: '/notes/network/http-vs-https' },
+                { text: 'Servlet', link: '/notes/web/servlet' }
               ]
             },
             {
@@ -142,9 +142,9 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '📄 概览', link: '/notes/devops/' },
-                { text: 'Git 使用指南', link: '/engineering/git' },
-                { text: 'CI/CD', link: '/engineering/cicd' },
-                { text: '分布式一致性', link: '/engineering/distributed-consistency' }
+                { text: 'Git 使用指南', link: '/notes/engineering/git' },
+                { text: 'CI/CD', link: '/notes/engineering/cicd' },
+                { text: '分布式一致性', link: '/notes/engineering/distributed-consistency' }
               ]
             },
             {
@@ -153,8 +153,8 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '📄 概览', link: '/notes/middleware/' },
-                { text: 'Kafka 核心', link: '/middleware/kafka-core' },
-                { text: 'Redis 缓存模式', link: '/middleware/redis-cache-patterns' }
+                { text: 'Kafka 核心', link: '/notes/middleware/kafka-core' },
+                { text: 'Redis 缓存模式', link: '/notes/middleware/redis-cache-patterns' }
               ]
             },
             {
@@ -162,8 +162,8 @@ export default defineConfig({
               link: '/notes/network/',
               collapsed: true,
               items: [
-                { text: 'TCP 三次握手', link: '/network/tcp-handshake' },
-                { text: 'TCP 四次挥手', link: '/network/tcp-four-way-handshake' }
+                { text: 'TCP 三次握手', link: '/notes/network/tcp-handshake' },
+                { text: 'TCP 四次挥手', link: '/notes/network/tcp-four-way-handshake' }
               ]
             },
             {
@@ -171,8 +171,8 @@ export default defineConfig({
               link: '/notes/os/',
               collapsed: true,
               items: [
-                { text: '进程与线程', link: '/os/process-thread' },
-                { text: '虚拟内存', link: '/os/virtual-memory' }
+                { text: '进程与线程', link: '/notes/os/process-thread' },
+                { text: '虚拟内存', link: '/notes/os/virtual-memory' }
               ]
             },
             {
@@ -181,7 +181,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '📄 概览', link: '/notes/algorithm/' },
-                { text: '排序算法', link: '/algorithm/sorting-algorithms' }
+                { text: '排序算法', link: '/notes/algorithm/sorting-algorithms' }
               ]
             },
             {
@@ -190,7 +190,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '📄 概览', link: '/notes/foundation/' },
-                { text: '操作系统核心', link: '/foundation/os-core' }
+                { text: '操作系统核心', link: '/notes/foundation/os-core' }
               ]
             }
           ]
@@ -330,7 +330,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Made with ❤️ by 小谷',
+      message: 'Made with ❤️ by 北川',
       copyright: 'Copyright © 2024 北川'
     }
   },
