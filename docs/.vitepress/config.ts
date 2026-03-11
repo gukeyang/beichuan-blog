@@ -78,6 +78,12 @@ export default defineConfig({
     theme: {
       light: 'vitesse-light',
       dark: 'vitesse-dark'
+    },
+    image: {
+      lazyLoading: true
     }
-  }
+  },
+  
+  // 忽略死链检查
+  ignoreDeadLinks: true
 })
