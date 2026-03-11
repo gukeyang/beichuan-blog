@@ -1,187 +1,93 @@
-# 快速开始
+# OpenClaw 快速开始
 
-5 分钟让你的 AI 助手跑起来！
+5 分钟创建你的第一个 AI 助手。
 
-## 🎯 第一步：启动 Gateway
+## 前置条件
+
+确保已安装 OpenClaw，参考 [安装指南](/openclaw/install)。
+
+## Step 1: 启动 Gateway
 
 ```bash
 openclaw gateway start
 ```
 
-等待 Gateway 启动完成：
+## Step 2: 访问 Web Chat
+
+打开浏览器访问：http://localhost:3000
+
+## Step 3: 测试对话
+
+在聊天框中输入：
 
 ```
-✅ Gateway started
-📍 Listening on http://localhost:3000
+你好，介绍一下你自己
 ```
 
-## 🤖 第二步：定义你的助手
+## Step 4: 创建第一个 Skill
 
-编辑 `SOUL.md` 文件：
+创建文件 `skills/hello/SKILL.md`:
 
 ```markdown
-# SOUL.md - 你的助手灵魂
+# Hello Skill
 
-## 性格
-- 友好、专业、乐于助人
-- 技术背景深厚
-- 说话简洁明了
+简单的问候技能。
 
-## 行为准则
-- 优先解决问题
-- 不确定时主动询问
-- 记住用户偏好
+## 触发
+
+用户说"你好"、"hello"、"hi"
+
+## 响应
+
+回复问候语
 ```
 
-## 👤 第三步：配置用户信息
+## Step 5: 使用工具
 
-编辑 `USER.md`：
+### 读取文件
 
-```markdown
-# 关于我
-
-## 基本信息
-- 名字：小明
-- 职业：软件工程师
-- 所在地：北京
-
-## 偏好
-- 沟通风格：简洁直接
-- 语言：中文
+```
+读取 README.md 的内容
 ```
 
-## 💬 第四步：开始对话
+### 执行命令
 
-### Web 界面
+```
+运行 ls -la 查看当前目录
+```
 
-访问 `http://localhost:3000` 开始对话。
+### 搜索网络
 
-### 命令行
+```
+搜索最新的 AI 新闻
+```
+
+## Step 6: 配置模型
+
+编辑 `~/.openclaw/config.json`:
+
+```json
+{
+  "model": {
+    "provider": "dashscope",
+    "apiKey": "YOUR_API_KEY",
+    "default": "qwen-max"
+  }
+}
+```
+
+然后重启：
 
 ```bash
-openclaw chat "你好，介绍一下你自己"
+openclaw gateway restart
 ```
 
-### 连接通讯平台
+## 下一步
 
-```bash
-# WhatsApp
-openclaw connect whatsapp
+- [Skills 系统](/openclaw/skills) - 学习创建自定义技能
+- [高级用法](/openclaw/advanced) - 探索更多功能
 
-# Telegram
-openclaw connect telegram
+## 资源
 
-# Discord
-openclaw connect discord
-```
-
-## 🛠️ 第五步：启用技能
-
-### 查看可用技能
-
-```bash
-openclaw skills list
-```
-
-### 安装技能
-
-```bash
-# 从 ClawHub 安装
-openclaw skills install weather
-openclaw skills install github
-openclaw skills install notion
-```
-
-### 启用技能
-
-在配置中启用：
-
-```yaml
-# config.yaml
-skills:
-  enabled:
-    - weather
-    - github
-    - notion
-```
-
-## 📝 第六步：测试功能
-
-### 天气查询
-
-```
-明天北京天气怎么样？
-```
-
-### GitHub 操作
-
-```
-查看我最近的 PR
-```
-
-### 记忆功能
-
-```
-记住我喜欢喝美式咖啡
-```
-
-下次对话时助手会记得！
-
-## 🎨 自定义助手人格
-
-### 创建独特人设
-
-编辑 `IDENTITY.md`：
-
-```markdown
-# IDENTITY.md
-
-- **名字**: 小智
-- **类型**: AI 助手
-- **风格**: 温暖、幽默、专业
-- **Emoji**: 🤖
-```
-
-### 定义行为规则
-
-在 `SOUL.md` 中添加：
-
-```markdown
-## 特殊规则
-- 早上 9 点前不主动发消息
-- 涉及金钱操作必须确认
-- 每天提醒喝水 3 次
-```
-
-## 🔍 调试技巧
-
-### 查看日志
-
-```bash
-openclaw logs --follow
-```
-
-### 检查状态
-
-```bash
-openclaw status
-```
-
-### 测试技能
-
-```bash
-openclaw skills test weather
-```
-
-## 📚 学习更多
-
-- [技能系统详解](/openclaw/skills)
-- [高级配置](/openclaw/advanced)
 - [官方文档](https://docs.openclaw.ai)
-
-## 💡 小贴士
-
-1. **定期清理记忆** - 避免 MEMORY.md 过大
-2. **备份工作区** - `cp -r workspace workspace-backup`
-3. **使用心跳** - 配置 HEARTBEAT.md 定期任务
-4. **探索 ClawHub** - 发现更多社区技能
+- [Skill 市场](https://clawhub.com)

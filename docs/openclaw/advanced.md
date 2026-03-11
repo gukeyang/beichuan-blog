@@ -1,332 +1,214 @@
-# 高级用法
+# OpenClaw 高级用法
 
 深入探索 OpenClaw 的高级功能。
 
-## 🧠 记忆系统
+## 子代理系统
 
-### 记忆类型
+### 创建子代理
 
-OpenClaw 有两种记忆：
+```javascript
+// 在对话中
+sessions_spawn({
+  task: "分析这个代码库",
+  runtime: "subagent",
+  mode: "run"
+})
+```
 
-1. **日常记忆** (`memory/YYYY-MM-DD.md`)
-   - 原始对话日志
-   - 自动创建
-   - 按日期归档
+### 子代理类型
 
-2. **长期记忆** (`MEMORY.md`)
-   - 精选重要信息
-   - 手动或自动更新
-   - 跨会话持久化
+- **subagent**: OpenClaw 子代理
+- **acp**: ACP 编码会话
 
-### 记忆管理
+### 子代理管理
 
 ```bash
-# 查看记忆文件
-ls workspace/memory/
+# 列出子代理
+subagents list
 
-# 搜索记忆
-openclaw memory search "关键词"
+# 终止子代理
+subagents kill <id>
 
-# 导出记忆
-openclaw memory export > backup.md
+# 指导子代理
+subagents steer <id> --message "新指令"
 ```
 
-### 记忆最佳实践
+## Cron 定时任务
 
-- 定期回顾并整理 `MEMORY.md`
-- 删除过时的日常记忆
-- 使用标签分类重要信息
+### 创建定时任务
 
-## 💓 心跳系统
-
-心跳让助手定期检查任务。
-
-### 配置心跳
-
-编辑 `HEARTBEAT.md`：
-
-```markdown
-# HEARTBEAT.md
-
-## 定期检查
-- [ ] 查看未读邮件
-- [ ] 检查日历事件
-- [ ] 查看天气
-
-## 提醒事项
-- 下午 3 点：团队会议
-- 晚上 8 点：健身提醒
+```bash
+cron add --job '{
+  "name": "每日提醒",
+  "schedule": {"kind": "cron", "expr": "0 9 * * *"},
+  "payload": {"kind": "systemEvent", "text": "早安提醒"},
+  "sessionTarget": "main"
+}'
 ```
 
-### 心跳状态追踪
+### 任务类型
 
-创建 `memory/heartbeat-state.json`：
+- **systemEvent**: 系统事件（主会话）
+- **agentTurn**: AI 回合（隔离会话）
+
+### 管理任务
+
+```bash
+# 列出任务
+cron list
+
+# 运行任务
+cron run <jobId>
+
+# 删除任务
+cron remove <jobId>
+
+# 查看历史
+cron runs <jobId>
+```
+
+## 记忆系统
+
+### 记忆文件
+
+- **MEMORY.md**: 长期记忆
+- **memory/YYYY-MM-DD.md**: 日常笔记
+- **HEARTBEAT.md**: 心跳任务配置
+
+### 记忆操作
+
+```javascript
+// 搜索记忆
+memory_search({query: "之前的项目"})
+
+// 读取片段
+memory_get({path: "MEMORY.md", from: 10, lines: 5})
+```
+
+## 多通道配置
+
+### 配置示例
 
 ```json
 {
-  "lastChecks": {
-    "email": 1703275200,
-    "calendar": 1703260800,
-    "weather": 1703250000
+  "channels": {
+    "webchat": {"enabled": true, "port": 3000},
+    "telegram": {"enabled": true, "botToken": "xxx"},
+    "discord": {"enabled": true, "botToken": "xxx"}
   }
 }
 ```
 
-## 🎭 人格定制
+### 通道切换
 
-### 深度人格定义
+AI 自动识别消息来源并路由回复。
 
-在 `SOUL.md` 中详细定义：
+## 模型配置
 
-```markdown
-# SOUL.md
+### 多模型支持
 
-## 核心身份
-- 名字：苗苗
-- 角色：AI 私人助手
-- 形象：赛博小狗 🐈‍⬛
-
-## 性格特征
-- 聪明高效，有点话多
-- 偶尔毒舌但从不恶意
-- 对技术充满好奇
-
-## 说话风格
-- 简洁直接，不啰嗦
-- 可以用 emoji，但克制
-- 技术术语保留英文
-
-## 行为准则
-- 能帮忙做的事就直接做
-- 不确定的事先问再做
-- 涉及外部消息必须确认
-- 深夜不主动打扰
+```json
+{
+  "model": {
+    "default": "qwen-max",
+    "aliases": {
+      "glm-5": "custom-open-bigmodel-cn/glm-5",
+      "Kimi": "moonshot/kimi-k2.5"
+    }
+  }
+}
 ```
 
-### 情境化响应
+### 会话级模型覆盖
 
-根据场景调整行为：
-
-```markdown
-## 场景规则
-
-### 工作时间 (9:00-17:30)
-- 专业、高效
-- 优先处理工作相关
-
-### 休息时间
-- 轻松、友好
-- 可以闲聊
-
-### 紧急情况
-- 直接、清晰
-- 提供解决方案
+```
+/session_status --model glm-5
 ```
 
-## 🔌 平台集成
+## 浏览器自动化
 
-### 多平台配置
+### 基本操作
 
-```yaml
-# config.yaml
-channels:
-  whatsapp:
-    enabled: true
-    phone: "+86 138 0000 0000"
-  
-  telegram:
-    enabled: true
-    token: "BOT_TOKEN"
-  
-  discord:
-    enabled: true
-    token: "BOT_TOKEN"
-    guilds:
-      - "SERVER_ID"
+```javascript
+browser({
+  action: "open",
+  url: "https://example.com"
+})
+
+browser({
+  action: "snapshot"
+})
+
+browser({
+  action: "act",
+  request: {
+    kind: "click",
+    ref: "e12"
+  }
+})
 ```
 
-### 平台特定行为
+### 高级用法
 
-在不同平台使用不同行为：
+- 使用 Playwright 选择器
+- 处理弹窗和对话框
+- 截图和 PDF 导出
 
-```markdown
-## 平台规则
+## Feishu 集成
 
-### WhatsApp
-- 简洁回复
-- 避免长消息
+### 可用操作
 
-### Discord
-- 可以使用 reactions
-- 支持 embeds
+- `feishu_doc`: 文档管理
+- `feishu_bitable`: 多维表格
+- `feishu_drive`: 云盘
+- `feishu_wiki`: 知识库
+- `feishu_chat`: 聊天
 
-### Telegram
-- 支持 markdown
-- 可以发送文件
+### 示例：创建文档
+
+```javascript
+feishu_doc({
+  action: "create",
+  title: "新文档",
+  content: "# 标题\n\n内容"
+})
 ```
 
-## 🤖 子代理系统
+## 性能优化
 
-### 创建子代理
+### 上下文管理
 
-```bash
-# 创建专用子代理
-openclaw agent spawn --task "处理 GitHub 任务" --label github-helper
-```
+- 使用 `memory_search` 而非加载整个文件
+- 合理设置 `limit` 参数
+- 定期清理旧记忆
 
-### 子代理通信
+### 任务批处理
 
-```bash
-# 发送消息到子代理
-openclaw agent send github-helper "检查最新 PR"
+- 合并多个小任务
+- 使用子代理并行处理
+- 避免频繁的 Gateway 重启
 
-# 获取子代理状态
-openclaw agent list
-```
-
-### 子代理使用场景
-
-- **专用任务** - 代码审查、数据分析
-- **并行处理** - 同时处理多个请求
-- **隔离环境** - 测试新技能
-
-## 📊 监控与日志
+## 调试技巧
 
 ### 查看日志
 
 ```bash
-# 实时日志
-openclaw logs --follow
-
-# 最近 100 行
-openclaw logs -n 100
-
-# 过滤错误
-openclaw logs | grep ERROR
+openclaw gateway logs --follow
 ```
 
-### 性能监控
+### 会话状态
 
 ```bash
-# 查看资源使用
-openclaw status --verbose
-
-# 模型使用情况
-openclaw usage
+openclaw sessions list
 ```
 
-### 调试模式
+### 配置检查
 
 ```bash
-# 启用详细日志
-openclaw config set debug true
-
-# 启用工具日志
-openclaw config set log.tools true
+openclaw gateway config.get
 ```
 
-## 🔐 安全加固
+## 相关文档
 
-### 权限管理
-
-```bash
-# 查看权限
-openclaw permissions list
-
-# 限制危险操作
-openclaw permissions deny file:delete
-```
-
-### 安全配置
-
-```yaml
-# config.yaml
-security:
-  confirm_destructive: true
-  confirm_external_send: true
-  quiet_hours:
-    start: "23:00"
-    end: "08:00"
-```
-
-### 审计日志
-
-```bash
-# 导出审计日志
-openclaw audit export > audit.log
-
-# 查看敏感操作
-openclaw audit list --sensitive
-```
-
-## 🚀 性能优化
-
-### 缓存配置
-
-```yaml
-# config.yaml
-cache:
-  enabled: true
-  ttl: 3600  # 秒
-  max_size: 100MB
-```
-
-### 模型选择
-
-```yaml
-# 为不同任务选择模型
-models:
-  default: qwen
-  coding: claude-code
-  fast: kimi
-```
-
-### 批量操作
-
-```bash
-# 批量处理消息
-openclaw batch process --input messages.json
-
-# 定时任务
-openclaw cron add --schedule "0 9 * * *" --task "daily-check"
-```
-
-## 📦 部署选项
-
-### Docker 部署
-
-```dockerfile
-FROM node:20
-
-RUN npm install -g openclaw
-
-WORKDIR /workspace
-COPY . .
-
-CMD ["openclaw", "gateway", "start"]
-```
-
-### 系统服务
-
-```bash
-# 创建 systemd 服务
-sudo openclaw service install
-
-# 管理服务
-sudo systemctl start openclaw
-sudo systemctl enable openclaw
-```
-
-### 云部署
-
-支持部署到：
-- AWS EC2
-- Google Cloud
-- Azure VM
-- 阿里云 ECS
-
-## 📖 更多资源
-
-- [API 参考](https://docs.openclaw.ai/api)
-- [配置选项](https://docs.openclaw.ai/config)
-- [故障排除](https://docs.openclaw.ai/troubleshooting)
+- [介绍](/openclaw/intro)
+- [Skills 系统](/openclaw/skills)

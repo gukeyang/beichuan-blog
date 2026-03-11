@@ -1,165 +1,137 @@
-# 安装指南
+# OpenClaw 安装指南
 
-本指南将帮助你在不同平台上安装 OpenClaw。
+详细安装步骤和配置说明。
 
-## 📋 前置要求
+## 系统要求
 
-- Node.js 18+ (推荐 v20+)
-- npm 或 pnpm
-- Git
+- Node.js >= 18.0.0
+- npm >= 9.0.0
+- 2GB+ 内存
+- 1GB+ 磁盘空间
 
-## 🚀 快速安装
+## 安装步骤
 
-### 使用 npm
+### 1. 安装 Node.js
+
+```bash
+# 使用 nvm (推荐)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+nvm install 18
+nvm use 18
+
+# 或者直接下载
+# https://nodejs.org/
+```
+
+### 2. 安装 OpenClaw
 
 ```bash
 npm install -g openclaw
 ```
 
-### 使用 pnpm
+### 3. 初始化工作区
 
 ```bash
-pnpm add -g openclaw
-```
-
-### 验证安装
-
-```bash
-openclaw --version
-```
-
-## 🖥️ 平台特定指南
-
-### Windows
-
-1. 安装 [Node.js](https://nodejs.org/)
-2. 以管理员身份运行 PowerShell
-3. 执行安装命令：
-   ```powershell
-   npm install -g openclaw
-   ```
-
-### macOS
-
-```bash
-# 使用 Homebrew 安装 Node.js
-brew install node
-
-# 安装 OpenClaw
-npm install -g openclaw
-```
-
-### Linux
-
-```bash
-# Ubuntu/Debian
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-# 安装 OpenClaw
-npm install -g openclaw
-```
-
-## 🔧 初始化工作区
-
-安装完成后，初始化你的工作区：
-
-```bash
-# 创建工作区目录
-mkdir -p ~/openclaw-workspace
+# 创建工作区
+mkdir ~/openclaw-workspace
 cd ~/openclaw-workspace
 
 # 初始化
 openclaw init
 ```
 
-初始化会创建以下结构：
+### 4. 配置
 
-```
-workspace/
-├── SOUL.md          # 助手人格定义
-├── USER.md          # 用户信息
-├── MEMORY.md        # 长期记忆
-├── IDENTITY.md      # 助手身份
-├── TOOLS.md         # 工具配置
-├── HEARTBEAT.md     # 心跳任务
-├── memory/          # 日常记忆
-└── skills/          # 自定义技能
-```
+编辑 `~/.openclaw/config.json`:
 
-## 🔑 配置平台连接
-
-### WhatsApp
-
-```bash
-openclaw connect whatsapp
+```json
+{
+  "model": {
+    "provider": "your-provider",
+    "apiKey": "your-api-key"
+  },
+  "channels": {
+    "webchat": {
+      "enabled": true,
+      "port": 3000
+    }
+  }
+}
 ```
 
-扫描显示的 QR 码即可连接。
+## 通道配置
 
 ### Telegram
 
-1. 联系 [@BotFather](https://t.me/BotFather)
-2. 创建新 Bot
-3. 获取 Token
-4. 配置到 OpenClaw：
-   ```bash
-   openclaw config set telegram.token YOUR_BOT_TOKEN
-   ```
+1. 联系 [@BotFather](https://t.me/BotFather) 创建 Bot
+2. 获取 Bot Token
+3. 添加到配置：
+
+```json
+{
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "YOUR_BOT_TOKEN"
+    }
+  }
+}
+```
+
+### WhatsApp
+
+1. 运行 `openclaw whatsapp link`
+2. 扫描二维码
+3. 完成绑定
 
 ### Discord
 
 1. 创建 Discord 应用
 2. 获取 Bot Token
 3. 邀请 Bot 到服务器
-4. 配置：
-   ```bash
-   openclaw config set discord.token YOUR_BOT_TOKEN
-   ```
 
-## ✅ 验证安装
-
-运行健康检查：
+## 启动服务
 
 ```bash
+# 启动 Gateway
+openclaw gateway start
+
+# 查看状态
+openclaw gateway status
+
+# 重启
+openclaw gateway restart
+
+# 停止
+openclaw gateway stop
+```
+
+## 验证安装
+
+```bash
+# 检查状态
 openclaw status
+
+# 查看日志
+openclaw gateway logs
 ```
 
-你应该看到类似输出：
+## 常见问题
 
-```
-✅ Gateway: Running
-✅ Workspace: ~/openclaw-workspace
-✅ Model: configured
-✅ Channels: 0 connected
-```
+### 端口被占用
 
-## 🐛 常见问题
-
-### 权限错误
-
-如果遇到 `EACCES` 错误：
+修改配置中的端口号，或使用：
 
 ```bash
-# npm 全局安装权限问题
-npm config set prefix ~/.npm-global
-export PATH=~/.npm-global/bin:$PATH
+lsof -i :3000
+kill -9 <PID>
 ```
 
-### Node 版本过低
+### API Key 错误
 
-```bash
-# 使用 nvm 管理 Node 版本
-nvm install 20
-nvm use 20
-```
+检查配置文件中的 API Key 是否正确，确保有足够的额度。
 
-### 防火墙问题
+## 相关文档
 
-确保以下端口可用：
-- Gateway API: 3000 (默认)
-
-## 📚 下一步
-
+- [介绍](/openclaw/intro)
 - [快速开始](/openclaw/quickstart)
-- [技能系统](/openclaw/skills)
