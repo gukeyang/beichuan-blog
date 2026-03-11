@@ -17,30 +17,22 @@ hero:
     - theme: alt
       text: 💡 灵感想法
       link: /ideas/
-    - theme: alt
-      text: 🛠️ 项目记录
-      link: /projects/
 
 features:
   - icon: 📚
     title: 学习笔记
-    details: Java 后端、AI 技术、前端开发、数据库... 记录技术成长路上的点滴
+    details: Java 后端、AI 技术、前端开发... 记录技术成长路上的点滴
     link: /notes/
   
   - icon: 💡
     title: 灵感想法
-    details: 突如其来的灵感、产品想法、技术探索、生活感悟
+    details: 突如其来的灵感、产品想法、技术探索
     link: /ideas/
   
   - icon: 🛠️
     title: 项目记录
-    details: 抖尘 AI 中台、CRM 系统、个人项目... 记录每一个实践
+    details: 抖尘 AI 中台、CRM 系统... 记录每一个实践
     link: /projects/
-  
-  - icon: 📖
-    title: 读书笔记
-    details: 技术书籍、非技术书籍、阅读心得、知识沉淀
-    link: /books/
 ---
 
 <style>
@@ -99,6 +91,6 @@ features:
 
 **欢迎来到我的知识世界！🌍**
 
-*开始探索吧 →* [📚 学习笔记](/notes/) | [💡 灵感想法](/ideas/) | [🛠️ 项目记录](/projects/)
+*开始探索吧 →* [📚 学习笔记](/notes/) | [💡 灵感想法](/ideas/) | [🛠️ 项目记录](/projects/) | [📖 读书笔记](/books/)
 
 </div>

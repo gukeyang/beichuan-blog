@@ -26,11 +26,8 @@ export default defineConfig({
           text: '📚 学习笔记',
           items: [
             { text: '概览', link: '/notes/' },
-            { text: 'Java 后端', link: '/notes/java/' },
-            { text: 'AI/机器学习', link: '/notes/ai/' },
-            { text: '前端开发', link: '/notes/frontend/' },
-            { text: '数据库', link: '/notes/database/' },
-            { text: 'DevOps', link: '/notes/devops/' },
+            { text: '☕ Java 后端', link: '/notes/java/' },
+            { text: '🤖 AI/机器学习', link: '/notes/ai/' },
           ]
         }
       ],
@@ -39,9 +36,7 @@ export default defineConfig({
           text: '💡 灵感想法',
           items: [
             { text: '概览', link: '/ideas/' },
-            { text: '产品想法', link: '/ideas/products/' },
-            { text: '技术探索', link: '/ideas/tech/' },
-            { text: '生活感悟', link: '/ideas/life/' },
+            { text: '🚀 产品想法', link: '/ideas/products/' },
           ]
         }
       ],
@@ -50,9 +45,7 @@ export default defineConfig({
           text: '🛠️ 项目记录',
           items: [
             { text: '概览', link: '/projects/' },
-            { text: '抖尘 AI 中台', link: '/projects/ai-platform/' },
-            { text: 'CRM 系统', link: '/projects/crm/' },
-            { text: '个人项目', link: '/projects/personal/' },
+            { text: '🤖 抖尘 AI 中台', link: '/projects/ai-platform/' },
           ]
         }
       ],
@@ -61,8 +54,6 @@ export default defineConfig({
           text: '📖 读书笔记',
           items: [
             { text: '概览', link: '/books/' },
-            { text: '技术书籍', link: '/books/tech/' },
-            { text: '非技术书籍', link: '/books/non-tech/' },
           ]
         }
       ],
