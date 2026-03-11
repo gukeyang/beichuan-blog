@@ -1,81 +1,104 @@
 ---
 layout: home
-title: 北川博客 - 后端开发技术分享
+title: 尘川的知识库
+titleTemplate: 学习笔记 · 技术探索 · 灵感记录
+
 hero:
-  name: 北川博客
-  text: 后端开发技术分享
-  tagline: 专注 Java、Spring、分布式系统与 AI 应用开发
+  name: 尘川的知识库
+  text: 学习笔记 · 技术探索 · 灵感记录
+  tagline: 记录成长路上的每一步
+  image:
+    src: /hero.svg
+    alt: 尘川知识库
   actions:
     - theme: brand
-      text: 🚀 开始学习
-      link: /guide/
+      text: 📚 开始浏览
+      link: /notes/
     - theme: alt
-      text: 📖 浏览文章
-      link: /java/
+      text: 💡 灵感想法
+      link: /ideas/
+    - theme: alt
+      text: 🛠️ 项目记录
+      link: /projects/
+
 features:
-  - icon: ☕
-    title: 后端开发
-    details: Java 核心、Spring 全家桶、数据库设计与优化
-    link: /java/
-  - icon: 🏗️
-    title: 架构设计
-    details: 中间件、工程化实践、系统架构设计
-    link: /middleware/
-  - icon: 📐
-    title: 基础能力
-    details: 计算机基础、算法、网络协议
-    link: /foundation/
+  - icon: 📚
+    title: 学习笔记
+    details: Java 后端、AI 技术、前端开发、数据库... 记录技术成长路上的点滴
+    link: /notes/
+  
   - icon: 💡
-    title: AI 大模型
-    details: LLM 原理、Prompt Engineering、RAG、Agent 开发、本地部署
-    link: /ai/
+    title: 灵感想法
+    details: 突如其来的灵感、产品想法、技术探索、生活感悟
+    link: /ideas/
+  
   - icon: 🛠️
-    title: 项目实战
-    details: 真实项目案例、从需求到上线的完整流程
-    link: /project/
-  - icon: 🔧
-    title: OpenClaw
-    details: 自动化运维、Agent 技能开发
-    link: /openclaw/
+    title: 项目记录
+    details: 抖尘 AI 中台、CRM 系统、个人项目... 记录每一个实践
+    link: /projects/
+  
+  - icon: 📖
+    title: 读书笔记
+    details: 技术书籍、非技术书籍、阅读心得、知识沉淀
+    link: /books/
 ---
 
-## 🎯 学习路径
+<style>
+.VPHero .image-bg {
+  opacity: 0.8;
+  transition: opacity 1s ease;
+}
 
-### ☕ 后端开发路线
+.VPHero:hover .image-bg {
+  opacity: 1;
+}
 
-```
-Java 基础 → Spring → 数据库 → 中间件 → 工程化 → 项目实战
-```
+.VPFeature {
+  transition: transform 0.3s ease;
+}
 
-### 💡 AI 大模型路线
+.VPFeature:hover {
+  transform: translateY(-5px);
+}
+</style>
 
-```
-大模型基础 → Prompt Engineering → RAG 实战 → Agent 开发 → 本地部署
-```
+## 👋 关于我
+
+你好，我是**尘川**，一名来自重庆的后端开发工程师。
+
+- 💼 专注于 Java 后端开发
+- 🤖 热衷于 AI 技术探索
+- 📖 保持学习，持续成长
+- 🎮 偶尔游戏，热爱生活
+
+这里是我的数字花园，记录着我的：
+- 📝 学习笔记与技术总结
+- 💭 灵光一现的想法
+- 🏗️ 项目实践与经验
+- 📚 阅读心得与感悟
+
+---
 
 ## 📊 最近更新
 
-<!-- 这里可以通过脚本自动生成 -->
+<!-- 这里可以手动维护最近更新列表 -->
 
-- 2024-03-09: [Kafka 核心概念](/middleware/kafka-core) - 架构、分区、消费者组详解
-- 2024-03-09: [操作系统核心概念](/foundation/os-core) - 进程、线程、内存管理
-- 2024-03-09: [常见排序算法](/algorithm/sorting-algorithms) - 6 种排序算法完整实现
-- 2024-03-09: [Agent 开发实战](/ai/agent-development) - 从理论到实践
-- 2024-03-09: [本地模型部署指南](/ai/local-model-deployment) - Ollama、vLLM 部署
+- **2026-03-11**: 知识库网站重构完成 🎉
+- **2026-03-10**: 天气页面功能上线 🌤️
 
-## 📈 文章统计
+---
 
-| 分类 | 文章数 | 分类 | 文章数 |
-|------|--------|------|--------|
-| Java | 8 | AI 大模型 | 7 |
-| Spring | 6 | OpenClaw | 6 |
-| 数据库 | 5 | 工程化 | 4 |
-| 中间件 | 4 | 网络 | 3 |
-| 基础 | 3 | 项目实战 | 2 |
-| 算法 | 3 | 操作系统 | 2 |
+## 🔗 联系我
 
-**总计：56 篇文章** 📝
+- GitHub: [@donkeyyz](https://github.com/donkeyyz)
+- 邮箱: [你的邮箱]
 
-## 💡 贡献指南
+---
 
-欢迎贡献文章！参考 [README.md](https://github.com/gukeyang/beichuan-blog) 了解如何添加文章。
+<div align="center">
+
+**欢迎来到我的知识世界！🌍**
+
+*开始探索吧 →* [📚 学习笔记](/notes/) | [💡 灵感想法](/ideas/) | [🛠️ 项目记录](/projects/)
+
+</div>
