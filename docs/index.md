@@ -1,15 +1,15 @@
 ---
 layout: home
-title: 尘川的知识库
+title: 北川的知识库
 titleTemplate: 学习笔记 · 技术探索 · 灵感记录
 
 hero:
-  name: 尘川的知识库
+  name: 北川的知识库
   text: 学习笔记 · 技术探索 · 灵感记录
   tagline: 记录成长路上的每一步
   image:
     src: /hero.svg
-    alt: 尘川知识库
+    alt: 北川知识库
   actions:
     - theme: brand
       text: 📚 开始浏览
@@ -56,7 +56,7 @@ features:
 
 ## 👋 关于我
 
-你好，我是**尘川**，一名来自重庆的后端开发工程师。
+你好，我是**北川**，一名来自重庆的后端开发工程师。
 
 - 💼 专注于 Java 后端开发
 - 🤖 热衷于 AI 技术探索

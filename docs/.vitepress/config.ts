@@ -2,8 +2,8 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "尘川的知识库",
-  description: "小谷的个人知识库 - 学习笔记、灵感想法、项目记录",
+  title: "北川的知识库",
+  description: "北川的个人知识库 - 学习笔记、灵感想法、项目记录",
   lastUpdated: true,
 
   // 启用文章目录（右侧 TOC）
@@ -331,7 +331,7 @@ export default defineConfig({
 
     footer: {
       message: 'Made with ❤️ by 小谷',
-      copyright: 'Copyright © 2024 尘川'
+      copyright: 'Copyright © 2024 北川'
     }
   },
   
