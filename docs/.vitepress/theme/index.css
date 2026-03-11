@@ -35,7 +35,7 @@ body::before {
   z-index: 0; /* 放在内容之下 */
   pointer-events: none;
   /* 默认隐藏或非常淡 */
-  opacity: 0; 
+  opacity: 0;
   transition: opacity 0.5s ease;
 }
 
@@ -60,7 +60,7 @@ body::before {
   --vp-c-brand-1: #a78bfa; /* Violet 400 */
   --vp-c-brand-2: #c084fc; /* Purple 400 */
   --vp-c-brand-3: #e879f9; /* Fuchsia 400 */
-  
+
   /* 文本：冷银色 */
   --vp-c-text-1: #f1f5f9;
   --vp-c-text-2: #94a3b8;
@@ -73,14 +73,14 @@ body::before {
 /* 深色模式光晕 - 强烈的极光跟随 */
 .dark body::before {
   opacity: 1;
-  background: 
+  background:
     radial-gradient(
-      800px circle at var(--mouse-x) var(--mouse-y), 
+      800px circle at var(--mouse-x) var(--mouse-y),
       rgba(139, 92, 246, 0.1), /* 紫色核心 */
       transparent 40%
     ),
     radial-gradient(
-      500px circle at calc(var(--mouse-x) + 50px) calc(var(--mouse-y) + 50px), 
+      500px circle at calc(var(--mouse-x) + 50px) calc(var(--mouse-y) + 50px),
       rgba(45, 212, 191, 0.08), /* 青色伴随 */
       transparent 40%
     );
@@ -278,7 +278,43 @@ body::before {
   display: none;
 }
 
-/* 隐藏 VPLocalNavOutlineDropdown (顶部面包屑下的“本页目录”) */
+/* 隐藏 VPLocalNavOutlineDropdown (顶部面包屑下的"本页目录") */
 .VPLocalNavOutlineDropdown {
   display: none !important;
+}
+
+/* 侧边栏缩进优化 - 增加层级缩进距离 */
+.VPSidebarItem.level-0 > .item {
+  padding-left: 12px;
+}
+
+.VPSidebarItem.level-1 > .item {
+  padding-left: 28px;
+}
+
+.VPSidebarItem.level-2 > .item {
+  padding-left: 44px;
+}
+
+.VPSidebarItem.level-3 > .item {
+  padding-left: 60px;
+}
+
+/* 调整侧边栏分组标题的缩进 */
+.VPSidebar .group > .sidebar-group__title {
+  font-size: 14px;
+  font-weight: 600;
+  padding-left: 12px;
+  margin-bottom: 4px;
+}
+
+/* 优化侧边栏项目之间的间距 */
+.VPSidebarItem {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+/* 调整侧边栏整体内边距 */
+.VPSidebar .groups {
+  padding-left: 0;
 }
