@@ -101,7 +101,7 @@ export default defineConfig({
             {
               text: '🤖 AI/机器学习',
               link: '/notes/ai/',
-              collapsed: false,
+              collapsed: true,
               items: [
                 { text: '📄 概览', link: '/notes/ai/' },
                 { text: 'LLM 基础', link: '/ai/llm-basics' },
