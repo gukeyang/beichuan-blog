@@ -23,7 +23,14 @@ export default defineConfig({
           items: [
             { text: '概览', link: '/notes/' },
             { text: '☕ Java 后端', link: '/notes/java/' },
-            { text: '🤖 AI/机器学习', link: '/notes/ai/' },
+            {
+              text: '🤖 AI/机器学习',
+              items: [
+                { text: '概览', link: '/notes/ai/' },
+                { text: '🐕 OpenClaw 完全指南', link: '/notes/ai/openclaw-tutorial' },
+                { text: 'OpenClaw 集成实践', link: '/notes/ai/openclaw-integration' },
+              ]
+            },
             { text: '🎨 前端开发', link: '/notes/frontend/' },
             { text: '🗄️ 数据库', link: '/notes/database/' },
             { text: '🚀 DevOps', link: '/notes/devops/' },
