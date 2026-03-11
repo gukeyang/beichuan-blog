@@ -18,6 +18,31 @@ export default defineConfig({
   },
 
   themeConfig: {
+    // 启用搜索功能
+    search: {
+      provider: 'local',
+      options: {
+        locales: {
+          root: {
+            translations: {
+              button: {
+                buttonText: '搜索',
+                buttonAriaLabel: '搜索文档'
+              },
+              modal: {
+                noResultsText: '无法找到相关结果',
+                resetButtonTitle: '清除查询条件',
+                footer: {
+                  selectText: '选择',
+                  navigateText: '切换'
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    
     // 启用面包屑导航
     outline: { level: [2, 3], label: '目录' },
     
@@ -27,16 +52,146 @@ export default defineConfig({
       next: '下一篇'
     },
     
-    // 启用面包屑
-    breadcrumb: {
-      label: '面包屑导航'
-    },
-    
-    // 侧边栏可折叠
-    sidebar: {
-      useLink: true,
-      filtered: true
-    },
+    // 侧边栏配置 - 支持多级折叠展开
+    sidebar: [
+      {
+        text: '📚 学习笔记',
+        link: '/notes/',
+        collapsed: false,
+        items: [
+          {
+            text: '☕ Java 后端',
+            link: '/notes/java/',
+            collapsed: true,
+            items: [
+              { text: '📄 概览', link: '/notes/java/' }
+            ]
+          },
+          {
+            text: '🤖 AI/机器学习',
+            link: '/notes/ai/',
+            collapsed: false,
+            items: [
+              { text: '📄 概览', link: '/notes/ai/' },
+              { text: '🐕 OpenClaw 完全指南', link: '/notes/ai/openclaw-tutorial' },
+              { text: '🔧 OpenClaw 集成实践', link: '/notes/ai/openclaw-integration' }
+            ]
+          },
+          {
+            text: '🎨 前端开发',
+            link: '/notes/frontend/',
+            collapsed: true,
+            items: [
+              { text: '📄 概览', link: '/notes/frontend/' }
+            ]
+          },
+          {
+            text: '🗄️ 数据库',
+            link: '/notes/database/',
+            collapsed: true,
+            items: [
+              { text: '📄 概览', link: '/notes/database/' }
+            ]
+          },
+          {
+            text: '🚀 DevOps',
+            link: '/notes/devops/',
+            collapsed: true,
+            items: [
+              { text: '📄 概览', link: '/notes/devops/' }
+            ]
+          }
+        ]
+      },
+      {
+        text: '💡 灵感想法',
+        link: '/ideas/',
+        collapsed: true,
+        items: [
+          { text: '📄 概览', link: '/ideas/' },
+          {
+            text: '🚀 产品想法',
+            link: '/ideas/products/',
+            collapsed: true,
+            items: [
+              { text: '📄 概览', link: '/ideas/products/' }
+            ]
+          },
+          {
+            text: '🔬 技术探索',
+            link: '/ideas/tech/',
+            collapsed: true,
+            items: [
+              { text: '📄 概览', link: '/ideas/tech/' }
+            ]
+          },
+          {
+            text: '🌸 生活感悟',
+            link: '/ideas/life/',
+            collapsed: true,
+            items: [
+              { text: '📄 概览', link: '/ideas/life/' }
+            ]
+          }
+        ]
+      },
+      {
+        text: '🛠️ 项目记录',
+        link: '/projects/',
+        collapsed: true,
+        items: [
+          { text: '📄 概览', link: '/projects/' },
+          {
+            text: '🤖 抖尘 AI 中台',
+            link: '/projects/ai-platform/',
+            collapsed: true,
+            items: [
+              { text: '📄 概览', link: '/projects/ai-platform/' }
+            ]
+          },
+          {
+            text: '📊 CRM 系统',
+            link: '/projects/crm/',
+            collapsed: true,
+            items: [
+              { text: '📄 概览', link: '/projects/crm/' }
+            ]
+          },
+          {
+            text: '🎮 个人项目',
+            link: '/projects/personal/',
+            collapsed: true,
+            items: [
+              { text: '📄 概览', link: '/projects/personal/' }
+            ]
+          }
+        ]
+      },
+      {
+        text: '📖 读书笔记',
+        link: '/books/',
+        collapsed: true,
+        items: [
+          { text: '📄 概览', link: '/books/' },
+          {
+            text: '💻 技术书籍',
+            link: '/books/tech/',
+            collapsed: true,
+            items: [
+              { text: '📄 概览', link: '/books/tech/' }
+            ]
+          },
+          {
+            text: '📚 非技术书籍',
+            link: '/books/non-tech/',
+            collapsed: true,
+            items: [
+              { text: '📄 概览', link: '/books/non-tech/' }
+            ]
+          }
+        ]
+      }
+    ],
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '🏠 首页', link: '/' },
